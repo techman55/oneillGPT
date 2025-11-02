@@ -3,7 +3,7 @@ import "../styles/main.css"
 import "../styles/normalize.css"
 const App = () => {
 
-  const [input, setInput] = useState("PRESET INPUT GOES HERE");
+  const [input, setInput] = useState("Can you explain the significance of sound and meaning in Shaving?");
   const [chatLog, setChatLog] = useState([]);
   const [mode, setMode] = useState('light');
   const [loading, setLoading] = useState(false)
@@ -27,7 +27,7 @@ const App = () => {
     // setChatLog(prev => [...prev, { user: "chatgpt", message: data.message.choices[0].text }]);
     // simulate server response delay, then type the response out
     setTimeout(() => {
-      const botResponse = "PRESET RESPONSE GOES HERE - love jack";
+      const botResponse = `Sound and meaning— You’re delving into some pretty complex topics! Sound and meaning is not merely a tool to make the work pleasurable to the reader— it’s to place the author’s intention of the work dead center. So that the reader can’t miss there point.`;
 
       // append an empty bot message which we'll fill in as we 'type'
       setChatLog(prev => [...prev, { user: "chatgpt", message: "" }]);
@@ -54,7 +54,7 @@ const App = () => {
         }
       }, speed);
 
-    }, 2000)
+    }, 3500)
     
 
   }
@@ -130,9 +130,9 @@ const App = () => {
                 onChange={(e) => { setInput(e.target.value) }}
               />
             </form>
-            <button className='chat-input-icon' onClick={handleSubmit}>
+            <a className='chat-input-icon' onClick={handleSubmit}>
               <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 mr-1" height="1.13em" width="1.13em" xmlns="http://www.w3.org/2000/svg"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            </button>
+            </a>
           </div>
           <div className='chat-about'>
             <span>Darrell never makes mistakes</span>

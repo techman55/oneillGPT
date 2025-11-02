@@ -98,9 +98,12 @@ a{
 }
 .chat-input-icon {
   position: relative;
-  top: 16px;
+
   color: #84888f;
-  left: -16px;
+
+  background-color: transparent;
+  box-shadow: none;
+  margin-top: 15px;
 }
 
 .side-menu-newChat {
