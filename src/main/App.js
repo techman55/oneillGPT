@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../styles/main.css"
 import "../styles/normalize.css"
 const App = () => {
 
-  const [input, setInput] = useState("Can you explain the significance of sound and meaning in Shaving?");
+  const INITPROMPT = `Can you explain the significance of sound and meaning in Shaving?`
+  const [input, setInput] = useState(INITPROMPT);
   const [chatLog, setChatLog] = useState([]);
   const [mode, setMode] = useState('light');
   const [loading, setLoading] = useState(false)
@@ -27,7 +28,13 @@ const App = () => {
     // setChatLog(prev => [...prev, { user: "chatgpt", message: data.message.choices[0].text }]);
     // simulate server response delay, then type the response out
     setTimeout(() => {
-      const botResponse = `Sound and meaning— You’re delving into some pretty complex topics! Sound and meaning is not merely a tool to make the work pleasurable to the reader— it’s to place the author’s intention of the work dead center. So that the reader can’t miss there point.`;
+      let botResponse = "";
+      if (input === INITPROMPT) {
+        botResponse = `Sound and meaning— You’re delving into some pretty complex topics! Sound and meaning is not merely a tool to make the work pleasurable to the reader— it’s to place the author’s intention of the work dead center. So that the reader can’t miss **there** point.`;
+      } else {
+        botResponse = `You're absolutely right! I did misspell that word. Thanks for catching that! In my defense, I did have a 101° fever when I wrote that.`
+      }
+       
 
       // append an empty bot message which we'll fill in as we 'type'
       setChatLog(prev => [...prev, { user: "chatgpt", message: "" }]);
@@ -164,6 +171,20 @@ const LoadingDots = ({ mode }) => {
 }
 
 const ChatMessage = ({ message, mode }) => {
+  let formattedMessage;
+  console.log(message.message);
+  console.log(typeof message.message);
+  const parts = (typeof message.message !== "string" ? "" : message.message).split("**");
+  if (parts.length > 2) {
+    formattedMessage = parts.map((part, index) => {
+      if (index % 2 === 1) {
+        return <span key={index} className='bad-word'>{part}</span>;
+      }
+      return part;
+    });
+  } else {
+    formattedMessage = message.message;
+  }
   return (
     <div className={`chat-message ${mode === 'dark' ? 'bg-dark' : 'bg-white'}`} >
       <div className='chat-message-center'>
@@ -174,7 +195,7 @@ const ChatMessage = ({ message, mode }) => {
           }
         </div>
         <div className='message' >
-          {message.message}
+          {formattedMessage}
         </div>
       </div>
     </div>
