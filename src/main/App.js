@@ -3,7 +3,7 @@ import "../styles/main.css"
 import "../styles/normalize.css"
 const App = () => {
 
-  const INITPROMPT = `Can you explain the significance of sound and meaning in Shaving?`
+  const INITPROMPT = `Can you explain the significance of sound and meter in Shaving?`
   const [input, setInput] = useState(INITPROMPT);
   const [chatLog, setChatLog] = useState([]);
   const [mode, setMode] = useState('light');
@@ -30,7 +30,7 @@ const App = () => {
     setTimeout(() => {
       let botResponse = "";
       if (input === INITPROMPT) {
-        botResponse = `Sound and meaning— You’re delving into some pretty complex topics! Sound and meaning is not merely a tool to make the work pleasurable to the reader— it’s to place the author’s intention of the work at the dead center. So that the reader can’t miss **there** point. In “Shaving,” Blanco employs a myriad of phonetic devices to both create a dichotomy between different stages of his life—when his father is in his life and when he is not—and to reveal the aimless nature in which he travels through life.`;
+        botResponse = `Sound and meter— You’re delving into some pretty complex topics! Sound and meter are not merely tools to make the work pleasurable to the reader— it’s to place the author’s intention of the work at the dead center so that the reader can’t miss **there** point. In “Shaving,” Blanco employs a myriad of phonetic devices to both create a dichotomy between different stages of his life—when his father is in his life and when he is not—and to reveal the aimless nature in which he travels through life.`;
       } else {
         botResponse = `You're absolutely right! I did misspell that word. Thanks for catching that! In my defense, I did have a 101° fever when I wrote that.`
       }
